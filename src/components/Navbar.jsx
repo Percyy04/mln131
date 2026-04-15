@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const navLinks = [
@@ -12,16 +12,26 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const location = useLocation()
+  
+  const isHome = location.pathname === '/'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', onScroll)
+    setScrolled(window.scrollY > 20)
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [location.pathname])
+
+  const hideNavbar = isHome && !scrolled && !menuOpen
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        hideNavbar 
+          ? '-translate-y-full opacity-0 pointer-events-none' 
+          : 'translate-y-0 opacity-100'
+      } ${
         scrolled || menuOpen ? 'bg-white shadow-md py-3' : 'bg-white/10 backdrop-blur-md py-4'
       }`}
     >
