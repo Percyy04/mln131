@@ -319,7 +319,7 @@ export default function TheoryPage() {
              to="/truyen-tranh"
              className="inline-flex items-center gap-3 border-[6px] border-[#111] bg-[#EBE5D9] px-8 py-4 text-xl font-black uppercase text-[#111] shadow-[8px_8px_0_0_#D32F2F] hover:bg-[#D32F2F] hover:text-[#EBE5D9] hover:border-[#EBE5D9] transition-colors"
            >
-             Xem Khởi Họa
+             Xem Ví dụ minh hoạ
              <IconChevronRight className="w-6 h-6" />
            </Link>
          </motion.div>
