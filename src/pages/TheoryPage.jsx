@@ -1,34 +1,46 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { theorySections } from '../data/theoryData'
+import {
+  IconBook,
+  IconBrain,
+  IconChevronRight,
+  IconHeart,
+  IconHome,
+  IconMegaphone,
+  IconMountain,
+  IconScale,
+  IconScroll,
+  IconStar,
+  IconUnity,
+  columnIcons,
+  sectionIconById,
+} from '../components/theory/TheoryIcons'
 
-const accentStyles = {
+const C = {
+  red: '#D32F2F',
+  cream: '#EBE5D9',
+  black: '#111',
+}
+
+const propAccents = {
   blue: {
-    border: 'border-[#1E3A8A]/25',
-    stepBg: 'bg-[#1E3A8A] text-white shadow-md shadow-[#1E3A8A]/25',
-    stepSoft: 'bg-sky-100 text-[#1E3A8A]',
-    dot: 'bg-[#1E3A8A]',
-    label: 'text-[#1E3A8A]',
-    glow: 'from-sky-50 via-white to-[#f8fafc]',
-    navBg: 'from-sky-50/90 to-white border-sky-100/80',
+    stepBg: 'bg-[#D32F2F] text-[#EBE5D9] border-[6px] border-[#111]',
+    panel: 'from-[#e8e2d6] to-[#EBE5D9]',
+    navCard:
+      'bg-[#EBE5D9] border-[6px] border-[#111] shadow-[12px_12px_0_0_#D32F2F] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[16px_16px_0_0_#D32F2F]',
   },
   orange: {
-    border: 'border-[#fb923c]/40',
-    stepBg: 'bg-[#F97316] text-white shadow-md shadow-orange-400/30',
-    stepSoft: 'bg-orange-100 text-orange-900',
-    dot: 'bg-[#F97316]',
-    label: 'text-[#c2410c]',
-    glow: 'from-orange-50 via-white to-amber-50/50',
-    navBg: 'from-orange-50/90 to-amber-50/40 border-orange-100/80',
+    stepBg: 'bg-[#111] text-[#EBE5D9] border-[6px] border-[#D32F2F]',
+    panel: 'from-[#ded8cc] to-[#EBE5D9]',
+    navCard:
+      'bg-[#EBE5D9] border-[6px] border-[#111] shadow-[12px_12px_0_0_#111] hover:-translate-y-1 hover:shadow-[16px_16px_0_0_#D32F2F]',
   },
   slate: {
-    border: 'border-indigo-200/60',
-    stepBg: 'bg-indigo-600 text-white shadow-md shadow-indigo-400/25',
-    stepSoft: 'bg-indigo-100 text-indigo-900',
-    dot: 'bg-indigo-500',
-    label: 'text-indigo-800',
-    glow: 'from-indigo-50 via-white to-slate-50',
-    navBg: 'from-indigo-50/80 to-slate-50/80 border-indigo-100/80',
+    stepBg: 'bg-[#D32F2F] text-[#EBE5D9] border-[6px] border-[#111]',
+    panel: 'from-[#e5dfd3] to-[#EBE5D9]',
+    navCard:
+      'bg-[#EBE5D9] border-[6px] border-[#111] shadow-[12px_12px_0_0_#D32F2F] hover:-translate-y-1 hover:shadow-[16px_16px_0_0_#111]',
   },
 }
 
@@ -36,26 +48,39 @@ function SlideBlock({ block, st }) {
   switch (block.kind) {
     case 'highlight':
       return (
-        <p className="text-lg sm:text-xl font-semibold text-gray-900 leading-snug tracking-tight">
-          {block.text}
-        </p>
+        <div className="flex gap-4 items-start border-l-[8px] border-[#D32F2F] bg-[#111] pl-5 py-4 pr-4">
+          <IconMegaphone className="w-8 h-8 shrink-0 text-[#D32F2F]" />
+          <p className="text-sm sm:text-base font-black text-[#EBE5D9] uppercase leading-snug tracking-tight">
+            {block.text}
+          </p>
+        </div>
       )
     case 'columns':
       return (
         <div className="space-y-4">
           {block.title && (
-            <p className="text-xs font-bold uppercase tracking-[0.15em] text-gray-400">{block.title}</p>
+            <p className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-[#D32F2F]">
+              <IconScroll className="w-5 h-5" />
+              {block.title}
+            </p>
           )}
-          <div className="grid gap-3 sm:grid-cols-3">
-            {block.items.map((col, i) => (
-              <div
-                key={i}
-                className="rounded-2xl bg-white border border-sky-100/90 px-4 py-4 shadow-sm shadow-slate-200/40"
-              >
-                <p className="font-bold text-[#1E3A8A] text-sm mb-1">{col.t}</p>
-                <p className="text-sm text-gray-600 leading-relaxed">{col.d}</p>
-              </div>
-            ))}
+          <div className="grid gap-4 sm:grid-cols-3">
+            {block.items.map((col, i) => {
+              const ColIcon = columnIcons[i] || IconMountain
+              return (
+                <div
+                  key={i}
+                  className="border-[6px] border-[#111] bg-[#EBE5D9] p-4 shadow-[6px_6px_0_0_#111] flex flex-col gap-3"
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <ColIcon className="w-7 h-7 shrink-0" />
+                    <span className="text-[10px] font-black text-[#D32F2F]">0{i + 1}</span>
+                  </div>
+                  <p className="font-black text-[#111] text-xs uppercase leading-tight">{col.t}</p>
+                  <p className="text-xs text-[#111] font-bold leading-relaxed">{col.d}</p>
+                </div>
+              )
+            })}
           </div>
         </div>
       )
@@ -63,14 +88,18 @@ function SlideBlock({ block, st }) {
       return (
         <div className="space-y-3">
           {block.title && (
-            <p className="text-xs font-bold uppercase tracking-[0.15em] text-gray-400">{block.title}</p>
+            <p className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-[#111]">
+              <IconStar className="w-5 h-5" accent={C.red} />
+              {block.title}
+            </p>
           )}
           <div className="flex flex-wrap gap-2">
             {block.items.map((p, i) => (
               <span
                 key={i}
-                className="inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm shadow-slate-200/50"
+                className="inline-flex items-center gap-2 border-[4px] border-[#111] bg-[#D32F2F] px-3 py-2 text-xs font-black uppercase text-[#EBE5D9] shadow-[4px_4px_0_0_#111]"
               >
+                <IconStar className="w-4 h-4" accent="#EBE5D9" />
                 {p}
               </span>
             ))}
@@ -79,10 +108,13 @@ function SlideBlock({ block, st }) {
       )
     case 'bullets_short':
       return (
-        <ul className="space-y-4">
+        <ul className="space-y-3">
           {block.items.map((line, i) => (
-            <li key={i} className="flex gap-3 items-start text-base sm:text-lg text-gray-800 font-medium leading-snug">
-              <span className={`mt-2 h-2 w-2 shrink-0 rounded-full ${st.dot}`} />
+            <li
+              key={i}
+              className="flex gap-3 items-start text-sm sm:text-base text-[#111] font-black uppercase leading-snug border-l-4 border-[#D32F2F] pl-4 py-1"
+            >
+              <IconStar className="w-5 h-5 shrink-0 mt-0.5" accent={C.red} />
               <span>{line}</span>
             </li>
           ))}
@@ -94,18 +126,25 @@ function SlideBlock({ block, st }) {
           {block.items.map((it, i) => (
             <li
               key={i}
-              className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 rounded-2xl border border-slate-100 bg-white px-4 py-4 sm:px-5 shadow-sm shadow-slate-200/30"
+              className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 border-[6px] border-[#111] bg-[#EBE5D9] p-4 shadow-[8px_8px_0_0_#D32F2F] relative group"
             >
               <span
-                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-sm font-black text-white ${st.stepBg}`}
+                className={`flex h-12 w-12 shrink-0 items-center justify-center text-lg font-black ${st.stepBg}`}
                 aria-hidden
               >
                 {i + 1}
               </span>
-              <div>
-                <p className="font-bold text-gray-900 text-base sm:text-lg leading-tight">{it.head}</p>
-                {it.sub && <p className="mt-1 text-sm text-gray-500 leading-relaxed">{it.sub}</p>}
+              <div className="min-w-0 flex-1 pr-6">
+                <p className="font-black text-[#111] text-sm sm:text-base uppercase leading-tight">
+                  {it.head}
+                </p>
+                {it.sub && (
+                  <p className="mt-1 text-xs sm:text-sm text-[#111] font-bold leading-relaxed normal-case opacity-90">
+                    {it.sub}
+                  </p>
+                )}
               </div>
+              <IconChevronRight className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-[#111]/25 group-hover:text-[#D32F2F] transition-colors" />
             </li>
           ))}
         </ol>
@@ -117,114 +156,166 @@ function SlideBlock({ block, st }) {
 
 export default function TheoryPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-sky-50/70 via-white to-orange-50/40 pt-24 pb-16">
-      <div className="relative max-w-4xl mx-auto px-5 sm:px-6">
-        <div className="flex items-center gap-2 text-sm text-slate-500 mb-8">
-          <Link to="/" className="hover:text-[#1E3A8A] transition-colors">
-            Trang chủ
-          </Link>
-          <span>/</span>
-          <span className="text-slate-700 font-medium">Lý thuyết</span>
+    <div className="font-sans bg-[#EBE5D9] text-[#111] selection:bg-[#D32F2F] selection:text-[#EBE5D9] overflow-hidden">
+      {/* Hero — cùng ngôn ngữ với Home */}
+      <section className="relative border-b-[12px] border-[#111] bg-[#D32F2F] overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none opacity-30">
+          <div className="absolute inset-0 bg-[radial-gradient(#111_2px,transparent_2px)] [background-size:8px_8px]" />
         </div>
+        <div className="absolute top-0 right-0 w-[55%] h-full bg-[#111] opacity-90 origin-top-right -skew-x-12 translate-x-1/4 hidden md:block" />
 
-        <motion.header
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="mb-10 rounded-3xl border border-white/80 bg-white/70 px-6 py-8 shadow-lg shadow-slate-200/50 backdrop-blur-sm text-center ring-1 ring-slate-100"
-        >
-          <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#F97316] mb-3">
-            Thuyết trình
-          </p>
-          <h1 className="text-2xl sm:text-4xl font-black text-slate-900 leading-[1.15] tracking-tight mb-4">
-            Tôn giáo trong thời kỳ quá độ
-            <span className="block text-[#1E3A8A] mt-1 text-xl sm:text-2xl font-bold">
-              & quan hệ dân tộc — tôn giáo
+        <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-6 pt-28 pb-16">
+          <div className="flex flex-wrap items-center gap-2 text-xs font-black uppercase tracking-wider text-[#EBE5D9] mb-8">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 border-[4px] border-[#EBE5D9] bg-[#111] px-3 py-1.5 hover:bg-[#D32F2F] transition-colors"
+            >
+              <IconHome className="w-4 h-4" />
+              Trang chủ
+            </Link>
+            <span className="text-[#EBE5D9]/60">/</span>
+            <span className="flex items-center gap-2">
+              <IconBook className="w-5 h-5" />
+              Lý thuyết
             </span>
-          </h1>
-          <p className="text-slate-600 text-sm sm:text-base max-w-md mx-auto">
-            Lý luận → thực tiễn Việt Nam → định hướng dân tộc & tôn giáo
-          </p>
-        </motion.header>
+          </div>
 
-        <nav
-          className="mb-12 grid grid-cols-1 sm:grid-cols-3 gap-3"
-          aria-label="Mục lục"
-        >
-          {theorySections.map((part) => {
-            const st = accentStyles[part.accent] || accentStyles.blue
-            return (
-              <a
-                key={part.id}
-                href={`#${part.id}`}
-                className={`group flex flex-col rounded-2xl border bg-gradient-to-br p-4 shadow-md shadow-slate-200/40 transition hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#F97316] focus-visible:ring-offset-2 focus-visible:ring-offset-sky-50 ${st.navBg}`}
-              >
-                <span className={`inline-flex h-8 w-8 items-center justify-center rounded-lg text-xs font-black mb-2 shadow-sm ${st.stepSoft}`}>
-                  {part.step}
-                </span>
-                <span className={`text-[10px] font-bold uppercase tracking-wider ${st.label}`}>
-                  {part.chapter}
-                </span>
-                <span className="mt-1 text-sm font-bold text-slate-900 leading-snug line-clamp-2">
-                  {part.title}
-                </span>
-                {part.tagline && (
-                  <span className="mt-2 text-xs text-slate-500 line-clamp-2 leading-relaxed">
-                    {part.tagline}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45 }}
+            className="max-w-2xl mx-auto md:mx-0 border-[8px] md:border-[12px] border-[#111] bg-[#EBE5D9] p-6 md:p-10 shadow-[12px_12px_0_0_#111] relative"
+          >
+            <div className="absolute -top-3 -right-10 text-[4rem] md:text-[5rem] text-[#D32F2F] drop-shadow-[4px_4px_0_#111] rotate-[12deg] select-none pointer-events-none">
+              ★
+            </div>
+
+            <div className="mb-4 inline-flex items-center gap-2 bg-[#111] text-[#EBE5D9] px-4 py-2 font-black tracking-[0.15em] uppercase text-[10px] sm:text-xs border-[4px] border-[#D32F2F]">
+              <IconScroll className="w-4 h-4" />
+              MLN131 — Lý thuyết
+            </div>
+
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#D32F2F] uppercase tracking-tighter leading-[0.95] mb-4">
+              Tôn giáo
+              <span className="block text-[#111] text-2xl sm:text-3xl md:text-4xl mt-2">
+                Thời kỳ quá độ &amp; Dân tộc–tôn giáo
+              </span>
+            </h1>
+
+            <div className="bg-[#111] text-[#EBE5D9] px-4 py-3 inline-block">
+              <p className="text-xs sm:text-sm font-black uppercase tracking-wide max-w-full">
+                Lý luận → thực tiễn Việt Nam → định hướng dân tộc &amp; tôn giáo
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Mục lục */}
+      <section className="py-12 px-5 sm:px-6 bg-[#111] relative">
+        <div className="absolute inset-0 opacity-[0.04] bg-[repeating-linear-gradient(45deg,#EBE5D9,#EBE5D9_10px,transparent_10px,transparent_20px)] pointer-events-none" aria-hidden />
+
+        <div className="max-w-5xl mx-auto relative z-10">
+          <h2 className="text-[#D32F2F] text-3xl md:text-5xl font-black uppercase tracking-tighter text-center mb-2 drop-shadow-[3px_3px_0_#EBE5D9]">
+            Nội dung
+          </h2>
+          <div className="h-2 w-32 bg-[#EBE5D9] mx-auto mb-10" />
+          <nav className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-6" aria-label="Mục lục">
+            {theorySections.map((part) => {
+              const st = propAccents[part.accent] || propAccents.blue
+              const SectionIcon = sectionIconById[part.id] || IconBook
+              return (
+                <a
+                  key={part.id}
+                  href={`#${part.id}`}
+                  className={`group flex flex-col p-6 transition-all ${st.navCard}`}
+                >
+                  <div className="flex items-center justify-between gap-3 mb-4">
+                    <div className="border-[4px] border-[#111] bg-[#111] p-2 text-[#EBE5D9]">
+                      <SectionIcon className="w-10 h-10" />
+                    </div>
+                    <span className="text-4xl font-black text-[#D32F2F] rotate-[-6deg] group-hover:rotate-0 transition-transform">
+                      {part.step}
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-black uppercase tracking-wider text-[#D32F2F]">
+                    {part.chapter}
                   </span>
-                )}
-              </a>
-            )
-          })}
-        </nav>
+                  <span className="mt-2 text-lg font-black text-[#111] uppercase leading-tight">
+                    {part.title}
+                  </span>
+                  {part.tagline && (
+                    <span className="mt-3 text-xs text-[#111] font-bold leading-relaxed normal-case opacity-90">
+                      {part.tagline}
+                    </span>
+                  )}
+                </a>
+              )
+            })}
+          </nav>
+        </div>
+      </section>
 
-        <div className="space-y-10">
+      {/* Các phần */}
+      <section className="py-12 px-5 sm:px-6 bg-[#EBE5D9]">
+        <div className="max-w-4xl mx-auto space-y-12">
           {theorySections.map((part) => {
-            const st = accentStyles[part.accent] || accentStyles.blue
+            const st = propAccents[part.accent] || propAccents.blue
+            const SectionIcon = sectionIconById[part.id] || IconBook
             return (
               <motion.article
                 key={part.id}
                 id={part.id}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.35 }}
-                className="scroll-mt-24"
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.4 }}
+                className="scroll-mt-28"
               >
-                <div
-                  className={`rounded-[1.75rem] border overflow-hidden bg-white shadow-xl shadow-slate-300/35 ring-1 ring-slate-100 ${st.border}`}
-                >
-                  <div className={`relative px-6 sm:px-8 py-8 sm:py-10 bg-gradient-to-br ${st.glow}`}>
-                    <div className="flex flex-col sm:flex-row sm:items-end gap-4 justify-between">
-                      <div className="flex items-start gap-4">
+                <div className="border-[8px] border-[#111] bg-[#EBE5D9] shadow-[16px_16px_0_0_#D32F2F] overflow-hidden">
+                  <div className={`relative px-6 sm:px-8 py-8 sm:py-10 bg-gradient-to-br ${st.panel}`}>
+                    <div className="flex flex-col sm:flex-row sm:items-start gap-6">
+                      <div className="flex items-center gap-4">
                         <div
-                          className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-lg font-black text-white shadow-lg ${st.stepBg}`}
+                          className={`flex h-16 w-16 shrink-0 items-center justify-center text-2xl font-black ${st.stepBg}`}
                           aria-hidden
                         >
                           {part.step}
                         </div>
-                        <div>
-                          <p className={`text-xs font-bold uppercase tracking-widest ${st.label}`}>
-                            {part.chapter}
-                          </p>
-                          <h2 className="mt-1 text-2xl sm:text-3xl font-black text-gray-900 leading-tight max-w-xl">
-                            {part.title}
-                          </h2>
+                        <div className="border-[4px] border-[#111] bg-[#111] p-2 text-[#EBE5D9] hidden sm:block">
+                          <SectionIcon className="w-12 h-12" />
                         </div>
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-[10px] font-black uppercase tracking-[0.25em] text-[#D32F2F]">
+                          {part.chapter}
+                        </p>
+                        <h2 className="mt-1 text-2xl sm:text-3xl md:text-4xl font-black text-[#111] uppercase leading-[0.95] tracking-tight">
+                          {part.title}
+                        </h2>
                       </div>
                     </div>
                     {part.lead && (
-                      <p className="mt-6 text-lg font-semibold text-gray-800 border-l-4 border-[#F97316] pl-4 py-1">
+                      <p className="mt-6 flex items-start gap-3 border-l-[8px] border-[#D32F2F] bg-[#111] pl-4 py-3 text-sm sm:text-base font-black uppercase text-[#EBE5D9] tracking-tight">
+                        <IconStar className="w-6 h-6 shrink-0 mt-0.5" accent={C.red} />
                         {part.lead}
                       </p>
                     )}
                   </div>
 
-                  <div className="px-5 sm:px-8 py-8 space-y-10 bg-white">
+                  <div className="px-5 sm:px-8 py-8 space-y-10 bg-[#ebe8df] border-t-[8px] border-[#111]">
                     {part.sections.map((sec, sei) => (
                       <div key={sei} className="space-y-8">
                         {sec.heading ? (
-                          <h3 className="text-lg sm:text-xl font-black text-[#1E3A8A] tracking-tight">
+                          <h3 className="inline-flex items-center gap-2 bg-[#D32F2F] text-[#EBE5D9] px-4 py-2 text-sm sm:text-base font-black uppercase tracking-wide border-[4px] border-[#111] shadow-[4px_4px_0_0_#111]">
+                            {sec.heading === 'Đặc điểm' && <IconUnity className="w-6 h-6" />}
+                            {sec.heading === 'Định hướng' && <IconScale className="w-6 h-6" />}
+                            {sec.heading === 'CN Mác – Lênin về tôn giáo' && <IconBook className="w-6 h-6" />}
+                            {![
+                              'Đặc điểm',
+                              'Định hướng',
+                              'CN Mác – Lênin về tôn giáo',
+                            ].includes(sec.heading) && <IconScroll className="w-6 h-6" />}
                             {sec.heading}
                           </h3>
                         ) : null}
@@ -236,10 +327,10 @@ export default function TheoryPage() {
                             return (
                               <div key={subi} className="space-y-6">
                                 {(hasLabel || hasTitle) && (
-                                  <h4 className="flex flex-wrap items-baseline gap-3 text-xl sm:text-2xl font-bold text-gray-900">
+                                  <h4 className="flex flex-wrap items-center gap-3 text-xl sm:text-2xl font-black text-[#111] uppercase">
                                     {hasLabel && (
-                                      <span className="text-[#F97316] font-black tabular-nums">
-                                        {sub.label})
+                                      <span className="inline-flex items-center justify-center min-w-[2.5rem] h-10 border-[4px] border-[#111] bg-[#D32F2F] text-[#EBE5D9] text-lg">
+                                        {sub.label}
                                       </span>
                                     )}
                                     {hasTitle && <span>{sub.title}</span>}
@@ -258,15 +349,19 @@ export default function TheoryPage() {
                     ))}
 
                     {part.conclusion && part.conclusion.lines && (
-                      <aside className="rounded-2xl border border-[#1E3A8A]/12 bg-gradient-to-br from-sky-50 via-white to-orange-50/40 px-6 py-8 text-center sm:text-left shadow-inner shadow-sky-100/80">
-                        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#F97316] mb-4">
+                      <aside className="border-[6px] border-[#111] bg-[#D32F2F] px-6 py-8 text-center sm:text-left shadow-[8px_8px_0_0_#111] relative overflow-hidden">
+                        <div className="absolute top-2 right-4 text-6xl text-white/10 pointer-events-none">
+                          ★
+                        </div>
+                        <p className="relative z-10 flex items-center justify-center sm:justify-start gap-2 text-[10px] font-black uppercase tracking-[0.25em] text-[#EBE5D9] mb-4">
+                          <IconStar className="w-5 h-5" accent="#EBE5D9" />
                           {part.conclusion.label}
                         </p>
-                        <ul className="space-y-3">
+                        <ul className="relative z-10 space-y-3">
                           {part.conclusion.lines.map((line, i) => (
                             <li
                               key={i}
-                              className="text-lg font-semibold text-slate-800 leading-snug"
+                              className="text-sm sm:text-base font-bold text-[#EBE5D9] leading-snug border-l-4 border-[#111] pl-4"
                             >
                               {line}
                             </li>
@@ -285,20 +380,22 @@ export default function TheoryPage() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border border-slate-200/80 bg-white px-6 py-5 shadow-md shadow-slate-200/40"
+          className="max-w-4xl mx-auto mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-[#111] border-[8px] bg-[#EBE5D9] px-6 py-6 shadow-[12px_12px_0_0_#D32F2F]"
         >
-          <p className="text-sm text-slate-600 text-center sm:text-left">
-            Tiếp theo: truyện tranh & quiz
+          <p className="text-sm font-black uppercase text-[#111] text-center sm:text-left flex items-center gap-2">
+            <IconBook className="w-6 h-6 shrink-0" />
+            Tiếp · truyện tranh &amp; quiz
           </p>
           <Link
             to="/truyen-tranh"
             id="theory-next-comic"
-            className="inline-flex items-center gap-2 rounded-xl bg-[#F97316] px-6 py-3 text-sm font-bold text-white shadow-md shadow-orange-300/40 hover:bg-[#ea6c0c] transition-colors"
+            className="inline-flex items-center gap-2 border-[6px] border-[#111] bg-[#D32F2F] px-6 py-3 text-sm font-black uppercase text-[#EBE5D9] shadow-[6px_6px_0_0_#111] hover:bg-[#111] hover:text-[#EBE5D9] transition-colors"
           >
-            Truyện tranh →
+            Truyện tranh
+            <IconChevronRight className="w-5 h-5 text-[#EBE5D9]" />
           </Link>
         </motion.div>
-      </div>
+      </section>
     </div>
   )
 }
