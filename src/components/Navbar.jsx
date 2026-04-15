@@ -1,68 +1,49 @@
-import { useState, useEffect } from 'react'
-import { NavLink, Link, useLocation } from 'react-router-dom'
+import { useState } from 'react'
+import { NavLink, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const navLinks = [
-  { to: '/', label: 'Trang chủ', end: true },
-  { to: '/ly-thuyet', label: 'Lý thuyết' },
-  { to: '/truyen-tranh', label: 'Truyện tranh' },
-  { to: '/quiz', label: 'Quiz' },
+  { to: '/', label: 'TRANG CHỦ', end: true, icon: '★' },
+  { to: '/ly-thuyet', label: 'LÝ THUYẾT', icon: '🏛️' },
+  { to: '/truyen-tranh', label: 'TRUYỆN', icon: '✊' },
+  { to: '/quiz', label: 'QUIZ', icon: '🎯' },
 ]
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const location = useLocation()
   
-  const isHome = location.pathname === '/'
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll)
-    setScrolled(window.scrollY > 20)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [location.pathname])
-
-  const hideNavbar = isHome && !scrolled && !menuOpen
-
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        hideNavbar 
-          ? '-translate-y-full opacity-0 pointer-events-none' 
-          : 'translate-y-0 opacity-100'
-      } ${
-        scrolled || menuOpen ? 'bg-white shadow-md py-3' : 'bg-white/10 backdrop-blur-md py-4'
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-1">
-          <span className="text-xl font-black text-[#1E3A8A]">MLN</span>
-          <span className="text-xl font-black text-[#F97316]">131</span>
+    <>
+      {/* DESKTOP SIDEBAR */}
+      <nav className="hidden md:flex fixed top-0 left-0 h-screen w-[90px] hover:w-[260px] bg-[#111] text-[#EBE5D9] border-r-[8px] border-[#D32F2F] flex-col justify-between py-10 transition-all duration-300 z-50 group overflow-hidden shadow-[8px_0_0_0_#111]">
+        
+        {/* LOGO */}
+        <Link to="/" className="flex flex-col items-center gap-2 group-hover:items-start group-hover:px-8 transition-all relative">
+          <div className="text-4xl font-black text-[#D32F2F] leading-none tracking-tighter shadow-black drop-shadow-md">MLN</div>
+          <div className="text-xl font-black bg-[#EBE5D9] text-[#111] px-1 transform -skew-x-[15deg] group-hover:ml-8 transition-all shadow-[4px_4px_0_0_#D32F2F]">131</div>
         </Link>
 
-        {/* Desktop Links */}
-        <ul className="hidden md:flex gap-8">
+        {/* MENU ITEMS */}
+        <ul className="flex flex-col gap-4 w-full mt-10 flex-1">
           {navLinks.map((link) => (
-            <li key={link.to}>
+            <li key={link.to} className="w-full">
               <NavLink
                 to={link.to}
                 end={link.end}
                 className={({ isActive }) =>
-                  `text-sm font-medium transition-colors relative group ${
-                    isActive ? 'text-[#1E3A8A]' : 'text-gray-600 hover:text-[#1E3A8A]'
+                  `flex items-center w-full px-7 py-4 font-black text-[1.1rem] whitespace-nowrap transition-colors border-l-[8px] ${
+                    isActive 
+                      ? 'border-[#D32F2F] bg-[#1a1a1a] text-[#D32F2F]' 
+                      : 'border-transparent text-[#EBE5D9] hover:bg-[#D32F2F] hover:text-[#111]'
                   }`
                 }
               >
                 {({ isActive }) => (
                   <>
-                    {link.label}
-                    <span
-                      className={`absolute -bottom-1 left-0 h-0.5 bg-[#F97316] transition-all duration-300 ${
-                        isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                      }`}
-                    />
+                    <span className="w-8 flex justify-center shrink-0 -ml-2 mr-5 text-2xl">{link.icon}</span>
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 tracking-widest">
+                      {link.label}
+                    </span>
                   </>
                 )}
               </NavLink>
@@ -70,50 +51,55 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* CTA */}
-        <Link
-          to="/quiz"
-          id="navbar-cta-quiz"
-          className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 bg-[#F97316] text-white text-sm font-semibold rounded-lg hover:bg-[#ea6c0c] transition-colors"
-        >
-          Làm Quiz ngay
-        </Link>
+        {/* BOTTOM DECORATION */}
+        <div className="px-6 flex justify-center group-hover:justify-start transition-all">
+           <div className="w-10 h-10 rounded-full bg-[radial-gradient(#111_30%,#D32F2F_35%)] border-4 border-[#111]"></div>
+        </div>
+      </nav>
 
-        {/* Hamburger */}
-        <button
-          id="navbar-menu-toggle"
-          className="md:hidden p-2 text-gray-700"
+      {/* MOBILE TOPBAR */}
+      <nav className="md:hidden fixed top-0 left-0 w-full h-[70px] bg-[#111] border-b-[6px] border-[#D32F2F] flex items-center justify-between px-6 z-50 shadow-[0_4px_0_0_#111]">
+        <Link to="/" className="flex items-center gap-2">
+          <span className="text-2xl font-black text-[#D32F2F] tracking-tighter drop-shadow-md">MLN</span>
+          <span className="text-xl font-black bg-[#EBE5D9] text-[#111] px-1 transform -skew-x-[12deg]">131</span>
+        </Link>
+        <button 
           onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
+          className="p-2 text-[#EBE5D9]"
         >
           <div className="w-6 flex flex-col gap-1.5">
-            <span className={`block h-0.5 bg-current transition-all duration-200 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-            <span className={`block h-0.5 bg-current transition-all duration-200 ${menuOpen ? 'opacity-0' : ''}`} />
-            <span className={`block h-0.5 bg-current transition-all duration-200 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+            <span className={`block h-[4px] bg-current transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-[10px]' : ''}`} />
+            <span className={`block h-[4px] bg-current transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`} />
+            <span className={`block h-[4px] bg-current transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-[10px]' : ''}`} />
           </div>
         </button>
-      </div>
+      </nav>
 
-      {/* Mobile menu */}
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t overflow-hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="md:hidden fixed top-[70px] left-0 w-full bg-[#111] border-b-[8px] border-[#D32F2F] z-40 overflow-hidden shadow-[0_8px_0_0_#111]"
           >
-            <ul className="flex flex-col px-6 py-4 gap-4">
+            <ul className="flex flex-col py-6">
               {navLinks.map((link) => (
                 <li key={link.to}>
                   <NavLink
                     to={link.to}
                     end={link.end}
                     className={({ isActive }) =>
-                      `block text-sm font-medium ${isActive ? 'text-[#1E3A8A] font-bold' : 'text-gray-700'}`
+                      `flex items-center px-8 py-5 text-xl font-black tracking-widest transition-colors ${
+                        isActive 
+                        ? 'text-[#D32F2F] bg-[#1a1a1a] border-l-[8px] border-[#D32F2F] pl-6' 
+                        : 'text-[#EBE5D9] hover:bg-[#D32F2F] hover:text-[#111]'
+                      }`
                     }
                     onClick={() => setMenuOpen(false)}
                   >
+                    <span className="mr-6 text-2xl">{link.icon}</span>
                     {link.label}
                   </NavLink>
                 </li>
@@ -122,6 +108,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </>
   )
 }

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { comicFrames } from '../data/comicData'
+import { IconHome, IconChevronRight } from '../components/theory/TheoryIcons'
 
 export default function ComicPage() {
   const [active, setActive] = useState(0)
@@ -14,133 +15,166 @@ export default function ComicPage() {
   const isLast = active === comicFrames.length - 1
 
   return (
-    <div className="min-h-screen bg-[#F3F4F6] pt-24 pb-20">
-      <div className="max-w-3xl mx-auto px-6">
-        {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-sm text-gray-400 mb-10">
-          <Link to="/" className="hover:text-[#1E3A8A] transition-colors">Trang chủ</Link>
-          <span>/</span>
-          <span className="text-gray-700 font-medium">Truyện tranh</span>
+    <div className="min-h-screen bg-[#EBE5D9] text-[#111] selection:bg-[#D32F2F] selection:text-[#EBE5D9] overflow-hidden">
+      
+      {/* HEADER */}
+      <section className="relative border-b-[12px] border-[#111] bg-[#111] overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none opacity-[0.05]">
+          <div className="absolute inset-0 bg-[radial-gradient(#EBE5D9_2px,transparent_2px)] [background-size:16px_16px]" />
         </div>
 
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mb-10"
-        >
-          <span className="inline-block px-3 py-1 bg-[#F97316]/10 text-[#F97316] text-sm font-semibold rounded-full mb-4">
-            Truyện Tranh Minh Họa
-          </span>
-          <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-2">
-            "Niềm Tin Đúng Đắn"
-          </h1>
-          <p className="text-gray-500 text-lg">Câu chuyện về tín ngưỡng và mê tín qua 6 khung tranh</p>
-        </motion.div>
-
-        {/* Progress bar */}
-        <div className="w-full bg-gray-200 rounded-full h-1.5 mb-6">
-          <motion.div
-            className="bg-[#F97316] h-1.5 rounded-full"
-            animate={{ width: `${((active + 1) / comicFrames.length) * 100}%` }}
-            transition={{ duration: 0.3 }}
-          />
-        </div>
-        <p className="text-xs text-gray-400 text-right mb-6">
-          Khung {active + 1} / {comicFrames.length}
-        </p>
-
-        {/* Comic viewer */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4 }}
-          className="bg-white rounded-3xl shadow-xl overflow-hidden mb-6"
-        >
-          {/* Frame area */}
-          <div className="relative bg-gradient-to-br from-blue-50 to-orange-50 min-h-72 flex flex-col items-center justify-center p-12">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={active}
-                initial={{ opacity: 0, x: 40 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -40 }}
-                transition={{ duration: 0.3 }}
-                className="text-center w-full"
-              >
-                <div className="text-8xl mb-7">{frame.emoji}</div>
-                <div className="inline-block bg-white rounded-2xl shadow-md px-7 py-5 max-w-md">
-                  <p className="text-xs font-bold text-[#1E3A8A] mb-2 uppercase tracking-wider">
-                    Khung {frame.id}
-                  </p>
-                  <p className="text-gray-800 text-base leading-relaxed">{frame.content}</p>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+        <div className="relative z-10 max-w-5xl mx-auto px-6 pt-24 pb-16 text-center">
+          <div className="flex flex-wrap justify-center items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-[#EBE5D9] mb-8">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 border-[4px] border-[#EBE5D9] bg-[#111] px-4 py-2 hover:bg-[#D32F2F] transition-colors shadow-[4px_4px_0_0_#D32F2F]"
+            >
+              <IconHome className="w-4 h-4" />
+              Trang Chủ
+            </Link>
+            <span className="text-[#EBE5D9]/60">/</span>
+            <span className="flex items-center gap-2 opacity-80">
+              Khởi Họa
+            </span>
           </div>
 
-          {/* Controls */}
-          <div className="px-8 py-5 flex items-center justify-between border-t border-gray-100">
-            <button
-              id="comic-prev"
-              onClick={prev}
-              disabled={isFirst}
-              className="px-5 py-2 rounded-xl text-sm font-semibold bg-gray-100 text-gray-700 hover:bg-gray-200 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-            >
-              ← Trước
-            </button>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-block"
+          >
+            <div className="mb-4 inline-flex items-center gap-2 bg-[#D32F2F] text-[#EBE5D9] px-4 py-2 font-black tracking-[0.2em] uppercase text-xs md:text-sm border-[4px] border-[#EBE5D9] shadow-[6px_6px_0_0_#EBE5D9]">
+              GÓC NHÌN THỰC TIỄN
+            </div>
+            <h1 className="text-4xl md:text-6xl font-black text-[#EBE5D9] uppercase tracking-tighter mb-4 drop-shadow-[4px_4px_0_#D32F2F]">
+              NIỀM TIN ĐÚNG ĐẮN
+            </h1>
+            <p className="text-[#D32F2F] text-lg md:text-xl font-bold uppercase tracking-wider">
+              Câu chuyện về tín ngưỡng và mê tín
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
-            {/* Dots */}
-            <div className="flex gap-2">
-              {comicFrames.map((_, i) => (
-                <button
-                  key={i}
-                  id={`comic-dot-${i}`}
-                  onClick={() => setActive(i)}
-                  className={`rounded-full transition-all duration-200 ${
-                    i === active
-                      ? 'w-6 h-2.5 bg-[#1E3A8A]'
-                      : 'w-2.5 h-2.5 bg-gray-300 hover:bg-gray-400'
-                  }`}
-                />
-              ))}
+      {/* VIEWER CONTENT */}
+      <section className="py-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          
+          {/* Progress bar */}
+          <div className="w-full bg-[#111] border-[4px] border-[#111] h-6 mb-2 relative overflow-hidden shadow-[6px_6px_0_0_#111]">
+            <motion.div
+              className="bg-[#D32F2F] h-full"
+              animate={{ width: `${((active + 1) / comicFrames.length) * 100}%` }}
+              transition={{ duration: 0.3 }}
+            />
+          </div>
+          <p className="text-sm font-black uppercase tracking-widest text-[#111] text-right mb-10">
+            Khung số <span className="text-[#D32F2F] text-xl ml-2">{active + 1} / {comicFrames.length}</span>
+          </p>
+
+          {/* Comic viewer */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4 }}
+            className="border-[12px] border-[#111] bg-[#EBE5D9] shadow-[16px_16px_0_0_#D32F2F] mb-16 relative overflow-hidden group"
+          >
+            {/* Frame area */}
+            <div className="relative min-h-[400px] flex flex-col items-center justify-center p-8 md:p-16 bg-[#ded8cc]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active}
+                  initial={{ opacity: 0, x: 50, scale: 0.95 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  exit={{ opacity: 0, x: -50, scale: 0.95 }}
+                  transition={{ duration: 0.3, type: "spring", stiffness: 100 }}
+                  className="text-center w-full"
+                >
+                  <div className="text-[120px] mb-8 leading-none drop-shadow-[8px_8px_0_rgba(17,17,17,0.15)] filter grayscale contrast-125 sepia-[.3]">
+                    {frame.emoji}
+                  </div>
+                  <div className="inline-block bg-[#111] border-[8px] border-[#D32F2F] text-[#EBE5D9] px-8 py-8 md:px-12 max-w-2xl shadow-[12px_12px_0_0_#111] transform -rotate-1 group-hover:rotate-0 transition-transform">
+                    <p className="text-xs font-black text-[#D32F2F] mb-4 uppercase tracking-[0.3em] inline-block border-b-[4px] border-[#D32F2F] pb-1">
+                      HIỆN THỰC
+                    </p>
+                    <p className="text-2xl md:text-3xl font-black uppercase leading-snug tracking-tighter">
+                      {frame.content}
+                    </p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
 
-            <button
-              id="comic-next"
-              onClick={next}
-              disabled={isLast}
-              className="px-5 py-2 rounded-xl text-sm font-semibold bg-[#1E3A8A] text-white hover:bg-[#163175] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
-            >
-              Tiếp →
-            </button>
-          </div>
-        </motion.div>
+            {/* Controls */}
+            <div className="px-6 py-6 flex items-center justify-between border-t-[8px] border-[#111] bg-[#111] text-[#EBE5D9]">
+              <button
+                onClick={prev}
+                disabled={isFirst}
+                className="px-6 py-3 border-[4px] border-[#EBE5D9] bg-[#111] text-sm font-black uppercase tracking-wider hover:bg-[#EBE5D9] hover:text-[#111] disabled:opacity-30 disabled:border-transparent disabled:hover:bg-transparent disabled:hover:text-[#EBE5D9] transition-colors"
+              >
+                Lùi Hóa
+              </button>
 
-        {/* Message pillars */}
-        <div className="grid grid-cols-3 gap-4 mb-10">
-          {['Tôn trọng tín ngưỡng chân chính', 'Bài trừ mê tín dị đoan', 'Thành công từ tri thức & nỗ lực'].map(
-            (msg, i) => (
-              <div key={i} className="bg-white rounded-2xl p-4 shadow-sm text-center">
-                <span className="text-3xl">{['🙏', '🚫', '💡'][i]}</span>
-                <p className="mt-2 text-xs font-medium text-gray-700">{msg}</p>
+              {/* Dots */}
+              <div className="flex gap-2">
+                {comicFrames.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActive(i)}
+                    className={`transition-all duration-300 border-2 border-[#EBE5D9] ${
+                      i === active
+                        ? 'w-8 h-4 bg-[#D32F2F] border-none'
+                        : 'w-4 h-4 bg-transparent hover:bg-[#EBE5D9]'
+                    }`}
+                  />
+                ))}
               </div>
-            )
-          )}
-        </div>
 
-        {/* Next CTA */}
-        <div className="flex justify-end">
-          <Link
-            to="/quiz"
-            id="comic-next-quiz"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#F97316] text-white font-semibold rounded-xl hover:bg-[#ea6c0c] transition-colors"
-          >
-            Tiếp: Quiz nhận thức →
-          </Link>
+              <button
+                onClick={next}
+                disabled={isLast}
+                className="px-6 py-3 border-[4px] border-[#EBE5D9] bg-[#D32F2F] text-sm font-black uppercase tracking-wider hover:border-[#D32F2F] hover:bg-[#EBE5D9] hover:text-[#111] disabled:opacity-30 disabled:hover:bg-[#D32F2F] disabled:hover:text-[#EBE5D9] disabled:hover:border-[#EBE5D9] transition-colors"
+              >
+                Tới Hiện
+              </button>
+            </div>
+          </motion.div>
+
+          {/* Message pillars */}
+          <div className="grid md:grid-cols-3 gap-6 mb-16">
+            {[
+              { icon: '★', text: 'Tôn trọng tín ngưỡng chân chính' },
+              { icon: '✖', text: 'Bài trừ mê tín dị đoan' },
+              { icon: '♠', text: 'Thành công từ nỗ lực tự thân' }
+            ].map((msg, i) => (
+              <div key={i} className="bg-[#111] border-[6px] border-[#D32F2F] p-8 shadow-[8px_8px_0_0_#111] text-center text-[#EBE5D9] hover:-translate-y-2 transition-transform">
+                <span className="text-5xl text-[#D32F2F] block mb-4 filter drop-shadow-[2px_2px_0_#EBE5D9]">{msg.icon}</span>
+                <p className="font-black uppercase tracking-widest text-sm leading-relaxed">{msg.text}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Next CTA */}
+          <motion.div
+           initial={{ opacity: 0, y: 30 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           className="mt-20 flex flex-col sm:flex-row items-center justify-between gap-6 border-[8px] border-[#111] bg-[#111] px-10 py-8 shadow-[12px_12px_0_0_#D32F2F]"
+         >
+           <p className="text-xl font-black uppercase text-[#EBE5D9] text-center sm:text-left flex items-center gap-3">
+             ĐÃ NẮM RÕ THÔNG ĐIỆP?
+           </p>
+           <Link
+             to="/quiz"
+             className="inline-flex items-center gap-3 border-[6px] border-[#111] bg-[#EBE5D9] px-8 py-4 text-xl font-black uppercase text-[#111] shadow-[8px_8px_0_0_#D32F2F] hover:bg-[#D32F2F] hover:text-[#EBE5D9] hover:border-[#EBE5D9] transition-colors"
+           >
+             Kiểm Tra Nhận Thức
+             <IconChevronRight className="w-6 h-6" />
+           </Link>
+         </motion.div>
         </div>
-      </div>
+      </section>
     </div>
   )
 }

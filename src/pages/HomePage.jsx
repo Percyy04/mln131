@@ -87,7 +87,6 @@ export default function HomePage() {
               className="group relative bg-[#D32F2F] text-[#EBE5D9] font-black text-2xl md:text-3xl uppercase px-10 py-5 w-full hover:bg-[#111] transition-colors border-[6px] border-[#111] shadow-[8px_8px_0px_0px_#111] hover:translate-y-[4px] hover:translate-x-[4px] hover:shadow-[4px_4px_0px_0px_#111] active:translate-y-[8px] active:translate-x-[8px] active:shadow-none"
             >
               Phân tích ngay
-              <span className="absolute right-6 top-1/2 -translate-y-1/2 transform group-hover:translate-x-2 transition-transform">➡</span>
             </button>
           </motion.div>
         </div>
