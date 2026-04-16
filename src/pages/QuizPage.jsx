@@ -103,7 +103,7 @@ export default function QuizPage() {
               ĐÁNH GIÁ NHẬN THỨC
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-[#111] uppercase tracking-tighter mb-4 drop-shadow-[4px_4px_0_#EBE5D9]">
-              QUIZ: BẠN NGHĨ GÌ?
+            Hệ tâm linh hay Hệ thực tế?
             </h1>
           </motion.div>
         </div>

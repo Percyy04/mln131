@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 const navLinks = [
   { to: '/', label: 'TRANG CHỦ', end: true, icon: '★' },
   { to: '/ly-thuyet', label: 'LÝ THUYẾT', icon: '🏛️' },
-  { to: '/truyen-tranh', label: 'TRUYỆN', icon: '✊' },
+  { to: '/truyen-tranh', label: 'VÍ DỤ', icon: '📖' },
   { to: '/quiz', label: 'QUIZ', icon: '🎯' },
 ]
 

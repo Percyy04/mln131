@@ -115,7 +115,7 @@ export default function TheoryPage() {
                 <img 
                   src={tonGiaoImg} 
                   alt="Tôn giáo là gì" 
-                  className="w-full h-auto md:h-[400px] object-cover filter grayscale contrast-125 sepia-[.2] transition-all duration-500 group-hover:grayscale-0 group-hover:contrast-100 group-hover:sepia-0" 
+                  className="w-full h-auto md:h-[400px] object-cover transition-all duration-500" 
                 />
                 <div className="absolute top-4 left-4 bg-[#D32F2F] text-[#EBE5D9] px-4 py-2 font-black uppercase text-sm border-[4px] border-[#111] shadow-[4px_4px_0_0_#111]">
                   TÔN GIÁO LÀ GÌ?
@@ -145,7 +145,7 @@ export default function TheoryPage() {
                 <img 
                   src={macLeninImg} 
                   alt="Mác - Lênin" 
-                  className="w-full h-auto md:h-[400px] object-cover filter grayscale contrast-125 sepia-[.1] transition-all duration-500 group-hover/img:grayscale-0 group-hover/img:contrast-100 group-hover/img:sepia-0" 
+                  className="w-full h-auto md:h-[400px] object-cover transition-all duration-500" 
                 />
                 <div className="absolute bottom-6 right-6 bg-[#111] text-[#EBE5D9] px-6 py-3 font-black uppercase text-xl md:text-2xl border-[4px] border-[#D32F2F] shadow-[6px_6px_0_0_#D32F2F] transform rotate-[3deg]">
                   QUAN ĐIỂM CHỦ ĐẠO
@@ -171,7 +171,7 @@ export default function TheoryPage() {
               <div className="text-6xl font-black text-[#D32F2F] group-hover:-rotate-12 transition-transform">03</div>
               <div>
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#D32F2F]">GỐC RỄ VẤN ĐỀ</p>
-                <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter">Nguồn gốc TG</h2>
+                <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter">Nguồn gốc Tôn giáo</h2>
               </div>
             </div>
             <motion.div variants={staggerContainer} className="p-8 md:p-10 grid sm:grid-cols-3 gap-6 relative z-10">
@@ -185,7 +185,7 @@ export default function TheoryPage() {
                     <img 
                       src={item.img} 
                       alt={item.title} 
-                      className="w-full h-full object-cover filter grayscale contrast-125 sepia-[.2] transition-all duration-500 group-hover/card:grayscale-0 group-hover/card:contrast-100 group-hover/card:sepia-0 transform group-hover/card:scale-105"
+                      className="w-full h-full object-cover transition-all duration-500 transform group-hover/card:scale-105"
                     />
                     <div className="absolute -bottom-6 right-2 w-12 h-12 bg-[#111] text-[#EBE5D9] flex items-center justify-center rounded-full border-[4px] border-[#D32F2F] z-20">
                       <item.icon className="w-5 h-5" />
