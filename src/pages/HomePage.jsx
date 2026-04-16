@@ -32,7 +32,7 @@ export default function HomePage() {
 
         {/* Nền thiết kế đồ họa Constructivism (Các khối xéo) */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-full md:w-[150%] h-[70%] bg-[#111] origin-top-right -rotate-[15deg] translate-x-[30%] -translate-y-[20%]"></div>
+          {/* Đã bỏ khối đen lớn ở góc trên phải để không che mặt Mác Lênin */}
           <div className="absolute bottom-0 left-0 w-full h-[60%] bg-[#EBE5D9] origin-bottom-left rotate-[8deg] -translate-y-10 -translate-x-[10%]"></div>
           {/* Các sọc chéo dã chiến */}
           <div className="absolute top-0 left-0 w-8 h-full bg-[#111] transform -skew-x-[20deg] translate-x-[20vw] opacity-20"></div>
