@@ -100,7 +100,7 @@ export default function TheoryPage() {
           {/* BLOCK 1: MỞ VẤN ĐỀ + KHÁI NIỆM */}
           <motion.article {...fadeUpScale} className="border-[8px] border-[#111] bg-[#EBE5D9] shadow-[12px_12px_0_0_#D32F2F] overflow-hidden group">
             <div className="relative px-8 py-8 bg-[#111] text-[#EBE5D9] border-b-[8px] border-[#111] flex items-center gap-6">
-              <div className="text-6xl font-black text-[#D32F2F] group-hover:-rotate-12 transition-transform">01</div>
+              <div className="text-6xl font-black text-[#D32F2F] group-hover:-rotate-12 transition-transform">01.</div>
               <div>
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#D32F2F]">CHƯƠNG V MỤC I</p>
                 <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter">Mở vấn đề & Khái niệm</h2>
@@ -134,7 +134,7 @@ export default function TheoryPage() {
           {/* BLOCK 2: BẢN CHẤT */}
           <motion.article {...fadeUpScale} className="border-[8px] border-[#111] bg-[#EBE5D9] shadow-[12px_12px_0_0_#D32F2F] overflow-hidden group">
             <div className="relative px-8 py-8 bg-[#D32F2F] text-[#EBE5D9] border-b-[8px] border-[#111] flex items-center gap-6">
-              <div className="text-6xl font-black text-[#111] group-hover:-rotate-12 transition-transform drop-shadow-[2px_2px_0_#EBE5D9]">02</div>
+              <div className="text-6xl font-black text-[#111] group-hover:-rotate-12 transition-transform drop-shadow-[2px_2px_0_#EBE5D9]">02.</div>
               <div>
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#111]">LÝ LUẬN CỐT LÕI</p>
                 <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-[#111]">Bản chất tôn giáo</h2>
@@ -168,7 +168,7 @@ export default function TheoryPage() {
           <motion.article {...fadeUpScale} className="border-[8px] border-[#111] bg-[#111] text-[#EBE5D9] shadow-[12px_12px_0_0_#111] overflow-hidden group relative">
             <div className="absolute inset-0 opacity-[0.05] bg-[repeating-linear-gradient(45deg,#EBE5D9,#EBE5D9_10px,transparent_10px,transparent_20px)] pointer-events-none"></div>
             <div className="relative px-8 py-8 border-b-[8px] border-[#D32F2F] flex items-center gap-6 bg-[#111] z-10">
-              <div className="text-6xl font-black text-[#D32F2F] group-hover:-rotate-12 transition-transform">03</div>
+              <div className="text-6xl font-black text-[#D32F2F] group-hover:-rotate-12 transition-transform">03.</div>
               <div>
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#D32F2F]">GỐC RỄ VẤN ĐỀ</p>
                 <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter">Nguồn gốc Tôn giáo</h2>
@@ -202,7 +202,7 @@ export default function TheoryPage() {
           {/* BLOCK 4: TÍNH CHẤT */}
           <motion.article {...fadeUpScale} className="border-[8px] border-[#111] bg-[#EBE5D9] shadow-[12px_12px_0_0_#D32F2F] overflow-hidden group">
             <div className="relative px-8 py-8 bg-[#EBE5D9] border-b-[8px] border-[#111] flex items-center gap-6">
-              <div className="text-6xl font-black text-[#111] group-hover:-rotate-12 transition-transform">04</div>
+              <div className="text-6xl font-black text-[#111] group-hover:-rotate-12 transition-transform">04.</div>
               <div>
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#111]">ĐẶC ĐIỂM HOẠT ĐỘNG</p>
                 <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-[#111]">Tính chất</h2>
@@ -223,7 +223,7 @@ export default function TheoryPage() {
           {/* BLOCK 5: NGUYÊN TẮC GIẢI QUYẾT */}
           <motion.article {...fadeUpScale} className="border-[8px] border-[#111] bg-[#EBE5D9] shadow-[12px_12px_0_0_#D32F2F] overflow-hidden group">
             <div className="relative px-8 py-8 bg-[#D32F2F] text-[#EBE5D9] border-b-[8px] border-[#111] flex items-center gap-6">
-              <div className="text-6xl font-black text-[#111] group-hover:-rotate-12 transition-transform drop-shadow-[2px_2px_0_#EBE5D9]">05</div>
+              <div className="text-6xl font-black text-[#111] group-hover:-rotate-12 transition-transform drop-shadow-[2px_2px_0_#EBE5D9]">05.</div>
               <div>
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#111]">THỜI KỲ QUÁ ĐỘ</p>
                 <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-[#111]">Nguyên tắc chung</h2>
@@ -256,7 +256,7 @@ export default function TheoryPage() {
           {/* BLOCK 6: VẬN DỤNG THỰC TIỄN VN */}
           <motion.article {...fadeUpScale} className="border-[8px] border-[#111] bg-[#111] text-[#EBE5D9] shadow-[12px_12px_0_0_#D32F2F] overflow-hidden group">
             <div className="relative px-8 py-8 bg-[#111] border-b-[8px] border-[#D32F2F] flex items-center gap-6">
-              <div className="text-6xl font-black text-[#D32F2F] group-hover:-rotate-12 transition-transform">06</div>
+              <div className="text-6xl font-black text-[#D32F2F] group-hover:-rotate-12 transition-transform">06.</div>
               <div>
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#D32F2F]">ĐẠI HỘI XIII & THỰC TIỄN</p>
                 <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-[#EBE5D9]">Vận dụng Việt Nam</h2>
@@ -266,24 +266,26 @@ export default function TheoryPage() {
               
               <div className="space-y-4">
                 <h3 className="inline-block bg-[#D32F2F] text-[#EBE5D9] px-4 py-2 font-black uppercase tracking-widest border-[4px] border-[#111] shadow-[4px_4px_0_0_#EBE5D9]">
-                  Chính sách Tôn giáo
+                  QUAN ĐIỂM CỦA ĐẢNG
                 </h3>
-                <ul className="space-y-4 pt-4 border-l-[6px] border-[#D32F2F] pl-6 ml-2">
-                  <li className="font-bold text-lg">Bình đẳng mọi tôn giáo trước pháp luật.</li>
-                  <li className="font-bold text-lg">Nghiêm cấm tuyệt đối phân biệt đối xử vì lý do tín ngưỡng.</li>
-                  <li className="font-bold text-lg text-[#D32F2F]">Kiên quyết xử lý mê tín dị đoan và các hành vi trục lợi tôn giáo.</li>
-                </ul>
+                <div className="bg-[#EBE5D9] text-[#111] p-6 border-[6px] border-[#D32F2F]">
+                  <p className="text-xl md:text-2xl font-black uppercase tracking-wide leading-relaxed border-l-[6px] border-[#111] pl-4 text-[#D32F2F]">
+                    TÔN GIÁO LÀ NGUỒN LỰC TINH THẦN & VẬT CHẤT
+                  </p>
+                </div>
               </div>
 
               <div className="space-y-4">
                 <h3 className="inline-block bg-[#D32F2F] text-[#EBE5D9] px-4 py-2 font-black uppercase tracking-widest border-[4px] border-[#111] shadow-[4px_4px_0_0_#EBE5D9]">
-                  Quan hệ Dân tộc & Tôn giáo
+                  Chính sách tôn giáo của Đảng và Nhà nước
                 </h3>
-                <div className="bg-[#EBE5D9] text-[#111] p-6 border-[6px] border-[#D32F2F]">
-                  <p className="font-bold uppercase tracking-wide leading-relaxed border-l-4 border-[#111] pl-4">
-                    Gắn kết cực kỳ chặt chẽ ở nước ta (Tây Nguyên, Tây Bắc, Khmer Nam Bộ). Kẻ thù thường xuyên lợi dụng chiêu bài <strong>"nhân quyền", "tôn giáo"</strong> để kích động ly khai dân tộc. Phải luôn cảnh giác, đặt nâng cao đời sống KTXH của đồng bào dân tộc - tôn giáo lên hàng đầu.
-                  </p>
-                </div>
+                <ul className="space-y-4 pt-4 border-l-[6px] border-[#D32F2F] pl-6 ml-2">
+                  <li className="font-bold text-lg uppercase flex items-center gap-3"><span className="text-2xl font-black text-[#D32F2F]">1.</span> NHU CẦU TINH THẦN LÂU DÀI</li>
+                  <li className="font-bold text-lg uppercase flex items-center gap-3"><span className="text-2xl font-black text-[#D32F2F]">2.</span> ĐẠI ĐOÀN KẾT DÂN TỘC</li>
+                  <li className="font-bold text-lg uppercase flex items-center gap-3"><span className="text-2xl font-black text-[#D32F2F]">3.</span> VẬN ĐỘNG QUẦN CHÚNG</li>
+                  <li className="font-bold text-lg uppercase flex items-center gap-3"><span className="text-2xl font-black text-[#D32F2F]">4.</span> SỰ LÃNH ĐẠO CỦA ĐẢNG</li>
+                  <li className="font-bold text-lg uppercase flex items-center gap-3"><span className="text-2xl font-black text-[#D32F2F]">5.</span> TUÂN THỦ HIẾN PHÁP</li>
+                </ul>
               </div>
 
               {/* KẾT LUẬN */}

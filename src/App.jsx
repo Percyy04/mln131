@@ -6,7 +6,7 @@ import HomePage from './pages/HomePage'
 import TheoryPage from './pages/TheoryPage'
 import ComicPage from './pages/ComicPage'
 import QuizPage from './pages/QuizPage'
-
+import Chatbot from './components/Chatbot'
 function ScrollToTop() {
   const { pathname } = useLocation()
 
@@ -33,6 +33,7 @@ function App() {
             <Route path="/quiz" element={<QuizPage />} />
           </Routes>
           <Footer />
+          <Chatbot />
         </main>
       </div>
     </BrowserRouter>

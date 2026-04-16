@@ -1,11 +1,23 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence, delay } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import confetti from 'canvas-confetti'
 import { comicFrames } from '../data/comicData'
 import { IconHome, IconChevronRight } from '../components/theory/TheoryIcons'
 
 export default function ComicPage() {
   const [active, setActive] = useState(0)
+
+  useEffect(() => {
+    if (active === 5) {
+      confetti({
+        particleCount: 200,
+        spread: 300,
+        origin: { y: 0.2 },
+        colors: ['#D32F2F', '#EBE5D9', '#10d853ff', '#1221f0ff']
+      })
+    }
+  }, [active])
 
   const prev = () => setActive((a) => Math.max(0, a - 1))
   const next = () => setActive((a) => Math.min(comicFrames.length - 1, a + 1))
@@ -69,9 +81,6 @@ export default function ComicPage() {
               transition={{ duration: 0.3 }}
             />
           </div>
-          <p className="text-sm font-black uppercase tracking-widest text-[#111] text-right mb-10">
-            Khung số <span className="text-[#D32F2F] text-xl ml-2">{active + 1} / {comicFrames.length}</span>
-          </p>
 
           {/* Comic viewer */}
           <motion.div
@@ -91,9 +100,19 @@ export default function ComicPage() {
                   transition={{ duration: 0.3, type: "spring", stiffness: 100 }}
                   className="text-center w-full"
                 >
-                  <div className="text-[120px] mb-8 leading-none drop-shadow-[8px_8px_0_rgba(17,17,17,0.15)] filter grayscale contrast-125 sepia-[.3]">
-                    {frame.emoji}
-                  </div>
+                  {frame.image ? (
+                    <div className="mb-10 border-[8px] border-[#111] bg-[#111] shadow-[12px_12px_0_0_#D32F2F] relative max-w-[90%] md:max-w-3xl mx-auto overflow-hidden group-hover:scale-[1.02] transition-transform">
+                      <img 
+                        src={frame.image} 
+                        alt="Minh hoạ" 
+                        className="w-full h-auto object-cover md:max-h-[500px]" 
+                      />
+                    </div>
+                  ) : (
+                    <div className="text-[120px] mb-8 leading-none drop-shadow-[8px_8px_0_rgba(17,17,17,0.15)] filter grayscale contrast-125 sepia-[.3]">
+                      {frame.emoji}
+                    </div>
+                  )}
                   <div className="inline-block bg-[#111] border-[8px] border-[#D32F2F] text-[#EBE5D9] px-8 py-8 md:px-12 max-w-2xl shadow-[12px_12px_0_0_#111] transform -rotate-1 group-hover:rotate-0 transition-transform">
                     <p className="text-xs font-black text-[#D32F2F] mb-4 uppercase tracking-[0.3em] inline-block border-b-[4px] border-[#D32F2F] pb-1">
                       HIỆN THỰC
@@ -113,7 +132,7 @@ export default function ComicPage() {
                 disabled={isFirst}
                 className="px-6 py-3 border-[4px] border-[#EBE5D9] bg-[#111] text-sm font-black uppercase tracking-wider hover:bg-[#EBE5D9] hover:text-[#111] disabled:opacity-30 disabled:border-transparent disabled:hover:bg-transparent disabled:hover:text-[#EBE5D9] transition-colors"
               >
-                Lùi Hóa
+                Lùi lại
               </button>
 
               {/* Dots */}
@@ -136,7 +155,7 @@ export default function ComicPage() {
                 disabled={isLast}
                 className="px-6 py-3 border-[4px] border-[#EBE5D9] bg-[#D32F2F] text-sm font-black uppercase tracking-wider hover:border-[#D32F2F] hover:bg-[#EBE5D9] hover:text-[#111] disabled:opacity-30 disabled:hover:bg-[#D32F2F] disabled:hover:text-[#EBE5D9] disabled:hover:border-[#EBE5D9] transition-colors"
               >
-                Tới Hiện
+                Tiếp theo
               </button>
             </div>
           </motion.div>
