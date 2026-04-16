@@ -4,8 +4,91 @@
 
 export const theorySections = [
   {
-    id: "phan-ii",
+    id: "phan-i",
     step: "01",
+    chapter: "Phần I",
+    title: "Dân tộc trong thời kỳ quá độ lên CNXH",
+    tagline: "Mác – Lênin: khái niệm · 2 xu hướng · Cương lĩnh",
+    accent: "red",
+    lead: "Cơ sở lý luận nền tảng giải quyết vấn đề dân tộc.",
+    sections: [
+      {
+        heading: "CN Mác – Lênin về dân tộc",
+        subsections: [
+          {
+            label: "a",
+            title: "Khái niệm & 2 xu hướng",
+            blocks: [
+              {
+                kind: "highlight",
+                text: "Dân tộc: Hình thức cộng đồng người ổn định, hình thành trong lịch sử, có chung lãnh thổ, kinh tế, ngôn ngữ và văn hóa/tâm lý.",
+              },
+              {
+                kind: "columns",
+                title: "2 Xu hướng khách quan",
+                items: [
+                  { t: "Tách ra", d: "Thức tỉnh ý thức dân tộc, muốn độc lập." },
+                  { t: "Liên hiệp lại", d: "Do lực lượng sản xuất phát triển, giao lưu kinh tế, văn hóa (toàn cầu hóa)." },
+                ],
+              },
+            ],
+          },
+          {
+            label: "b",
+            title: "Cương lĩnh dân tộc của V.I.Lênin",
+            blocks: [
+              {
+                kind: "numbered_short",
+                items: [
+                  { head: "Bình đẳng", sub: "Các dân tộc hoàn toàn bình đẳng, không phân biệt lớn/nhỏ." },
+                  { head: "Tự quyết", sub: "Quyền tự quyết định vận mệnh (tách ra hoặc liên hiệp tự nguyện)." },
+                  { head: "Đoàn kết", sub: "Liên hiệp công nhân tất cả dân tộc." },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        heading: "Dân tộc Việt Nam",
+        subsections: [
+          {
+            label: "a",
+            title: "Đặc điểm cơ bản",
+            blocks: [
+              {
+                kind: "bullets_short",
+                items: [
+                  "Có sự chênh lệch về số dân giữa các tộc người.",
+                  "Cư trú đan xen, không có cực đoan lãnh thổ.",
+                  "Đoàn kết gắn bó lâu đời trong lịch sử.",
+                  "Văn hóa đa dạng trong thống nhất.",
+                ],
+              },
+            ],
+          },
+          {
+            label: "b",
+            title: "Chính sách của Đảng",
+            blocks: [
+              {
+                kind: "pills",
+                title: "Nguyên tắc cơ bản",
+                items: ["Bình đẳng", "Đoàn kết", "Tôn trọng", "Giúp nhau phát triển"],
+              },
+              {
+                kind: "highlight",
+                text: "Phát triển toàn diện kinh tế, văn hóa, xã hội, an ninh quốc phòng vùng đồng bào dân tộc thiểu số.",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "phan-ii",
+    step: "02",
     chapter: "Phần II",
     title: "Tôn giáo trong thời kỳ quá độ lên CNXH",
     tagline: "Mác – Lênin: bản chất · nguồn gốc · nguyên tắc",
@@ -78,7 +161,7 @@ export const theorySections = [
   },
   {
     id: "muc-2",
-    step: "02",
+    step: "03",
     chapter: "Mục 2",
     title: "Tôn giáo VN & chính sách hiện nay",
     tagline: "Đặc điểm thực tiễn · Luật 2016 · Đại hội XIII",
@@ -137,7 +220,7 @@ export const theorySections = [
   },
   {
     id: "phan-iii",
-    step: "03",
+    step: "04",
     chapter: "Phần III",
     title: "Dân tộc & tôn giáo",
     tagline: "Đặc điểm · định hướng · ổn định chính trị",

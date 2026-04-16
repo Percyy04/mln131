@@ -253,13 +253,13 @@ export default function TheoryPage() {
             </div>
           </motion.article>
 
-          {/* BLOCK 6: VẬN DỤNG THỰC TIỄN VN */}
+          {/* BLOCK 6: VẬN DỤNG THỰC TIỄN VN (TÔN GIÁO) */}
           <motion.article {...fadeUpScale} className="border-[8px] border-[#111] bg-[#111] text-[#EBE5D9] shadow-[12px_12px_0_0_#D32F2F] overflow-hidden group">
             <div className="relative px-8 py-8 bg-[#111] border-b-[8px] border-[#D32F2F] flex items-center gap-6">
               <div className="text-6xl font-black text-[#D32F2F] group-hover:-rotate-12 transition-transform">06.</div>
               <div>
                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#D32F2F]">ĐẠI HỘI XIII & THỰC TIỄN</p>
-                <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-[#EBE5D9]">Vận dụng Việt Nam</h2>
+                <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-[#EBE5D9]">Vận dụng Việt Nam (Tôn giáo)</h2>
               </div>
             </div>
             <div className="p-8 md:p-10 space-y-10">
@@ -288,16 +288,41 @@ export default function TheoryPage() {
                 </ul>
               </div>
 
-              {/* KẾT LUẬN */}
-              <div className="border-[6px] border-[#D32F2F] bg-[#EBE5D9] text-[#111] p-8 text-center sm:text-left relative overflow-hidden mt-8 shadow-[8px_8px_0_0_#D32F2F]">
-                <div className="absolute top-0 right-4 text-[100px] text-[#D32F2F]/10 font-black rotate-12">★</div>
+            </div>
+          </motion.article>
+
+          {/* BLOCK 7: VẬN DỤNG THỰC TIỄN VN (DÂN TỘC) */}
+          <motion.article {...fadeUpScale} className="border-[8px] border-[#111] bg-[#EBE5D9] shadow-[12px_12px_0_0_#D32F2F] overflow-hidden group">
+            <div className="relative px-8 py-8 bg-[#EBE5D9] border-b-[8px] border-[#111] flex items-center gap-6">
+              <div className="text-6xl font-black text-[#111] group-hover:-rotate-12 transition-transform">07.</div>
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#111]">QUAN ĐIỂM CHỦ ĐẠO</p>
+                <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tighter text-[#111]">Vận dụng Việt Nam (Dân tộc)</h2>
+              </div>
+            </div>
+            <div className="p-8 md:p-10 space-y-10 bg-white">
+              
+              <div className="space-y-4">
+                <h3 className="inline-block bg-[#111] text-[#EBE5D9] px-6 py-3 font-black uppercase tracking-widest border-[4px] border-[#D32F2F] shadow-[6px_6px_0_0_#D32F2F]">
+                  CHÍNH SÁCH DÂN TỘC TRỌNG TÂM
+                </h3>
+                <div className="pt-6 pb-2 border-l-[6px] border-[#111] pl-6 ml-4 space-y-6">
+                  <p className="font-bold text-lg md:text-xl text-[#111]">1. Các dân tộc bình đẳng, đoàn kết, tôn trọng, giúp nhau cùng phát triển.</p>
+                  <p className="font-bold text-lg md:text-xl text-[#111]">2. Ưu tiên phát triển kinh tế - xã hội vùng đồng bào dân tộc thiểu số và miền núi.</p>
+                  <p className="font-bold text-lg md:text-xl text-[#D32F2F]">3. Nghiêm cấm mọi hành vi kỳ thị, chia rẽ khối đại đoàn kết toàn dân tộc.</p>
+                </div>
+              </div>
+
+              {/* KẾT LUẬN CHUNG */}
+              <div className="border-[6px] border-[#D32F2F] bg-[#111] text-[#EBE5D9] p-8 text-center sm:text-left relative overflow-hidden mt-8 shadow-[8px_8px_0_0_#D32F2F]">
+                <div className="absolute top-0 right-4 text-[100px] text-[#D32F2F]/20 font-black rotate-12">★</div>
                 <h4 className="flex items-center gap-3 text-2xl font-black uppercase tracking-tighter text-[#D32F2F] mb-4">
                   <IconUnity className="w-8 h-8" />
-                  KẾT LUẬN
+                  KẾT LUẬN TOÀN CHƯƠNG
                 </h4>
-                <p className="font-black text-xl uppercase leading-snug">
+                <p className="font-black text-xl uppercase leading-snug text-[#EBE5D9]">
                   Giải quyết đúng tôn giáo & quan hệ dân tộc–tôn giáo = GIỮ VỮNG ĐẠI ĐOÀN KẾT TOÀN DÂN TỘC. <br/><br/>
-                  <span className="text-[#D32F2F] bg-black text-[#EBE5D9] px-2 py-1 relative z-10">Đó là động lực to lớn xây dựng CNXH.</span>
+                  <span className="text-[#111] bg-[#D32F2F] px-2 py-1 relative z-10">Đó là động lực to lớn xây dựng CNXH.</span>
                 </p>
               </div>
 
